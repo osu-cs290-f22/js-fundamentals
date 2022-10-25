@@ -116,3 +116,52 @@ function printArrayElem(elem) {
     console.log("  -- in printArrayElem(), elem:", elem)
 }
 array.forEach(printArrayElem)
+
+// () => {}
+
+console.log("==========")
+console.log("== Objects")
+console.log("==========")
+
+var person = {
+    firstName: "Luke",
+    lastName: "Skywalker",
+    age: 22,
+    getFullName: function () {
+        return this.firstName + " " + this.lastName
+    },
+    parents: ["Darth", "Amadala"]
+}
+person.father = "Darth Vader"
+
+console.log("== person:", person)
+console.log("== person['firstName']:", person['firstName'])
+console.log("== person.firstName:", person.firstName)
+console.log("== person.getFullName:", person.getFullName)
+console.log("== person.getFullName():", person.getFullName())
+
+function Person(firstName, lastName, age) {
+    if (!firstName) {
+        throw "Need a first name"
+    }
+    this.firstName = firstName
+    this.lastName = lastName
+    this.age = age
+}
+
+Person.prototype.getFullName = function () {
+    return this.firstName + " " + this.lastName
+}
+
+Person.prototype.getAge = function () {}
+
+Person.staticMethod = function () {}
+Person.staticMethod()
+
+var p = new Person("Leia", "Organa", 22)
+console.log("== p:", p)
+console.log("== p.getFullName():", p.getFullName())
+
+var p2 = new Person("Rey", "???", 21)
+console.log("== p2:", p2)
+console.log("== p2.getFullName():", p2.getFullName())
